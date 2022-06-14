@@ -1,0 +1,43 @@
+{%  extends "base.html" %}
+
+
+{% block content %}
+
+
+    <div class="container">
+    <!-- htmltable -->
+    <!-- create new todo -->
+    <div class="row">
+        <div class="col-md-3">
+            <a href="/createTodo"  class="btn btn-primary btn-lg btn-block">Create Todo</a>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+            <tr>
+                <td>{{todo.id}}</td>
+                <td>{{todo.title}}</td>
+                <td>{{todo.description}}</td>
+                <td>{{todo.get_status_from_enum()}}</td>
+                <td><a href="/mark_as_complete/{{todo.id}}" class="btn btn-primary">Complete</a></td>
+                <td><a href="/deleteTodo/{{todo.id}}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+
+
+{% endblock content %}
