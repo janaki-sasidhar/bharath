@@ -1,0 +1,34 @@
+{%  extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container">
+    <!-- blogs view  -->
+    <!-- table with th -->
+    <table class="table">
+        <!-- headers -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Post</th>
+                <th>Owner</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in blogs %}
+            <tr id="table_{{blog.id}}">
+                <td>{{blog.id}}</td>
+                <td>{{blog.title}}</td>
+                <td>{{blog.body | truncate(50, true)}}</td>
+                <td>{{blog.author.username}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}
